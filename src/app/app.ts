@@ -10,5 +10,9 @@ import { DUMMY_USERS } from './dummy-users';
   styleUrl: './app.css'
 })
 export class App {
-  users = DUMMY_USERS
+  users = DUMMY_USERS;
+
+  onSelectUser(userId: string) {
+    console.log('Selected user ID:', userId);
+  }
 }
