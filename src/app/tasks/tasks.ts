@@ -39,6 +39,10 @@ export class Tasks {
     },
   ];
 
+  get selectedUserTasks() {
+    return this.tasks.filter((task) => task.userId === this.userId);
+  }
+
   onCompleteTask = (taskId: string) => {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
   }
@@ -47,7 +51,7 @@ export class Tasks {
     this.isAddingTask = true;
   }
 
-  get selectedUserTasks() {
-    return this.tasks.filter((task) => task.userId === this.userId);
+  onCancelAddTask = () => {
+    this.isAddingTask = false;
   }
 }
