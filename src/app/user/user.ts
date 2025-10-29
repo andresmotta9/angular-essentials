@@ -1,5 +1,11 @@
 import { Component, computed, EventEmitter, Input, input, Output, output } from '@angular/core';
 
+type UserType = {
+  id: string;
+  name: string;
+  avatar: string;
+};
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -7,9 +13,7 @@ import { Component, computed, EventEmitter, Input, input, Output, output } from 
   styleUrl: './user.css',
 })
 export class User {
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  @Input({ required: true }) user!: UserType;
   @Output() select = new EventEmitter<string>();
   // select = output<string>();
 
@@ -19,10 +23,10 @@ export class User {
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser() {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
